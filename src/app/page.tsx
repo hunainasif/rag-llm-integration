@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar/Sidebar"
 export default function Home() {
   return (
     <div className="home w-full h-screen">
-      <div className="flex w-full h-full">
+      <div className="flex w-full h-full relative">
         <Sidebar />
         <MainBar />
       </div>

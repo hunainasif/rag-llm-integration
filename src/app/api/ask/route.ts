@@ -45,8 +45,9 @@ export const POST = async (request: NextRequest, response: NextRequest) => {
         },
       ],
     });
+    let response = chatResponse?.choices[0].message;
     console.log(chatResponse?.choices[0].message?.content);
-    return NextResponse.json({ messages }, { status: 200 });
+    return NextResponse.json({ response }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

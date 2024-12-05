@@ -21,6 +21,22 @@
 }
 
 :root {
-  --primary: #002d62;
-  --secondary: #f5f5dc;
+  --primary: #171717;
+  --secondary: #212121;
+}
+.messages::-webkit-scrollbar {
+  width: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #555;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
