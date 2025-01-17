@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { Index, Pinecone as PineconeClient } from "@pinecone-database/pinecone";
-import { OpenAI } from "openai"; // Direct OpenAI SDK import
+import { OpenAI } from "openai";  
 
 export const POST = async (request: NextRequest, response: NextRequest) => {
   try {
