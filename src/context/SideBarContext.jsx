@@ -19,11 +19,11 @@ export const SideBarProvider = ({ children }) => {
       }
     };
 
-    checkMobile(); // Initial check
-    window.addEventListener("resize", checkMobile); // Update on resize
+    checkMobile();  
+    window.addEventListener("resize", checkMobile);  
 
     return () => {
-      window.removeEventListener("resize", checkMobile); // Cleanup listener
+      window.removeEventListener("resize", checkMobile);  
     };
   }, []);
 
