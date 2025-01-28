@@ -57,12 +57,10 @@ export const POST = async (request: NextRequest) => {
       { message: "Upload and processing successful" },
       { status: 200 }
     );
-  } catch (error: any | string) {
-    console.error("Error:", error);
-    return NextResponse.json(
-      { error: error.message || "Internal Server Error" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error("Error:", errorMessage);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 };
 

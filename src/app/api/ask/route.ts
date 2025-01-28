@@ -10,28 +10,31 @@ export const POST = async (request: NextRequest) => {
     });
     const pineConeIndex: Index = pineCone.Index(process.env.PINECONE_INDEX!);
 
-    // take prompt
+    // Parse the request body
     const reqBody = await request.json();
-    const { messages } = reqBody;
-    // make embeddings of the prompt
+    const { messages }: { messages: string } = reqBody;
+
+    // Create embeddings for the prompt
     const embeddings = new OpenAIEmbeddings({
       apiKey: process.env.OPENAI_API_KEY!,
     });
 
     const vectors = await embeddings.embedQuery(messages);
     console.log(vectors);
-    //   query the vector Database
+
+    // Query the vector database
     const queryResponse = await pineConeIndex.query({
       vector: vectors,
       topK: 5,
       includeMetadata: true,
     });
-    //   got response from vector data base
-    const formattedtext = queryResponse?.matches
+
+    // Format text from vector database response
+    const formattedText = queryResponse?.matches
       .map((doc) => doc?.metadata?.text)
       .join("\n");
-    //  initialize OpenAi
 
+    // Initialize OpenAI
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY!,
     });
@@ -41,13 +44,16 @@ export const POST = async (request: NextRequest) => {
       messages: [
         {
           role: "user",
-          content: `Treat Like Your are the agent of a developer You have to gothrough the complete CV and make strong grip on all the sections specially skiils section project and others :\n\n${formattedtext}`,
+          content: `Treat like you're the agent of a developer. You need to go through the complete CV and focus on all sections, especially skills, projects, and others:\n\n${formattedText}`,
         },
       ],
     });
-    const response = chatResponse?.choices[0].message;
-    console.log(chatResponse?.choices[0].message?.content);
-    return NextResponse.json({ response }, { status: 200 });
+
+    // Directly use the response content
+    const responseContent = chatResponse?.choices[0]?.message?.content;
+    console.log(responseContent);
+
+    return NextResponse.json({ content: responseContent }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
