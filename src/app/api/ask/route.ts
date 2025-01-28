@@ -3,7 +3,7 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { Index, Pinecone as PineconeClient } from "@pinecone-database/pinecone";
 import { OpenAI } from "openai";
 
-export const POST = async (request: NextRequest, response: NextRequest) => {
+export const POST = async (request: NextRequest) => {
   try {
     const pineCone = new PineconeClient({
       apiKey: process.env.PINECONE_API_KEY!,
@@ -45,7 +45,7 @@ export const POST = async (request: NextRequest, response: NextRequest) => {
         },
       ],
     });
-    let response = chatResponse?.choices[0].message;
+    const response = chatResponse?.choices[0].message;
     console.log(chatResponse?.choices[0].message?.content);
     return NextResponse.json({ response }, { status: 200 });
   } catch (error: any) {

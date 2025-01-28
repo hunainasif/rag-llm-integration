@@ -1,5 +1,4 @@
 "use client";
-import React, { useRef } from "react";
 import WelcomeCards from "../WelcomeCards/WelcomeCards";
 import MessageInput from "../MessageInput/MessageInput";
 import Messages from "../Messages/Messages";

@@ -1,13 +1,9 @@
 "use client"
 import { Link as LinkIcon, MessageSquare, X } from 'lucide-react'
 import Link from 'next/link'
-import Historymessage from '../Historymessage/Historymessage'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
 import { useSideBarContext } from "@/context/SideBarContext"
-import { useMessageContext } from '@/context/MessageContext'
 export default function Sidebar() {
-    const closeRef = useRef()
     const { sideBarOpen, setSideBarOpen, isMobile } = useSideBarContext()
 
     return (
