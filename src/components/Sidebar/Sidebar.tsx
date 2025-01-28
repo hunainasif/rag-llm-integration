@@ -51,14 +51,11 @@ export default function Sidebar() {
                 {/* bottom Section */}
                 <div className="bottom text-white">
                     <ul className="flex flex-col space-y-2">
-                        <Link href={`https://google.com`} className='flex   py-3 items-center justify-between '>
+                        <Link href={`https://github.com/hunainasif`} className='flex   py-3 items-center justify-between '>
                             <span className='text-xl font-semibold'>GitHub</span>
                             <LinkIcon />
                         </Link>
-                        <Link href={`https://google.com`} className='flex   py-3 items-center justify-between '>
-                            <span className='text-xl font-semibold'>LinkedIn</span>
-                            <LinkIcon />
-                        </Link>
+
 
                     </ul>
                 </div>
