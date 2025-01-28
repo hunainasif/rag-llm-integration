@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { Index, Pinecone as PineconeClient } from "@pinecone-database/pinecone";
-import { OpenAI } from "openai";  
+import { OpenAI } from "openai";
 
 export const POST = async (request: NextRequest, response: NextRequest) => {
   try {
@@ -33,7 +33,7 @@ export const POST = async (request: NextRequest, response: NextRequest) => {
     //  initialize OpenAi
 
     const openai = new OpenAI({
-      apikey: process.env.OPENAI_API_KEY!,
+      apiKey: process.env.OPENAI_API_KEY!,
     });
 
     const chatResponse = await openai.chat.completions.create({
@@ -41,7 +41,7 @@ export const POST = async (request: NextRequest, response: NextRequest) => {
       messages: [
         {
           role: "user",
-          content: `Please review the following code:\n\n${formattedtext}`,
+          content: `Treat Like Your are the agent of a developer You have to gothrough the complete CV and make strong grip on all the sections specially skiils section project and others :\n\n${formattedtext}`,
         },
       ],
     });
